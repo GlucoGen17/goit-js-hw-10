@@ -10,11 +10,11 @@ function fetchCountries(name) {
         return response.json();
     });
 }
+export default fetchCountries;
+    
+
 
 // fetch('http://example.com/movies.json')
 //   .then(response => {
 //     return response.json();
 //   })
-
-
-  export default fetchCountries;
