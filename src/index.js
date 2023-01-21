@@ -11,5 +11,11 @@ const countryInfo = document.querySelector('country-info');
 
 searchBox.addEventListener('input', debounce ( e => {
     const name = searchBox.value.trim();
-
+    if (!name) {
+        createPage();
+        return;
+    };
+    fetchCountries(name)
+        .then()
+        .catch()
 }, DEBOUNCE_DELAY))
