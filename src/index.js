@@ -33,11 +33,22 @@ function nameData() {
         createInfoCountry(country);
     }
 }
-function nameError() {
-
+function nameError(error) {
+Notiflix.Notify.failure('Oops, there is no country with that name');
+clearPage();
+return error;
 }
 
 // Функція виводу інформації про країни в назві яких є символи, що ми передираємо
-function createLIstCountry(country) {}
+function createLIstCountry(country) {
+const markup = country
+  .map(
+    ({ name, flags }) => `<li>
+        <img src="${flags.svg}" alt="${name}" width="30", height="15">&nbsp${name.official}`
+  )
+  .join('');
+}
 // Функція виводу інформації про країну в назві якої всі символи повністю збігаються
-function createInfoCountry(country) {}
+function createInfoCountry(country) {
+
+}
