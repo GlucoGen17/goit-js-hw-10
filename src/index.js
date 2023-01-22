@@ -10,9 +10,9 @@ const countryList = document.querySelector('country-list');
 const countryInfo = document.querySelector('country-info');
 
 searchBox.addEventListener('input', debounce(e => {
-    const name = searchBox.value.trim();
+    const name = e.target.value.trim();
     if (!name) {
-        createPage();
+        clearPage();
         return;
     } else {
         fetchCountries(name)
@@ -20,15 +20,24 @@ searchBox.addEventListener('input', debounce(e => {
             .catch(nameError)
     }
 }, DEBOUNCE_DELAY))
-
+// функція порівняння назв за їх складовою частиною. назва === назві то виводимо інформацію, якщо частина назви === частині то виводимо список де є ці частини
 function nameData() {
-    
+    clearPage();
+    if (country.length > 10) {
+        Notiflix.Notify.info(
+            'Too many matches found. Please enter a more specific name.');
+            return;
+    } else if (country.length >= 2 && country.length <= 10) {
+        createLIstCountry(country);
+    } else if (country.length === 1) {
+        createInfoCountry(country);
+    }
 }
-
 function nameError() {
 
 }
 
 // Функція виводу інформації про країни в назві яких є символи, що ми передираємо
-
+function createLIstCountry(country) {}
 // Функція виводу інформації про країну в назві якої всі символи повністю збігаються
+function createInfoCountry(country) {}
