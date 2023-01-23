@@ -66,7 +66,7 @@ function createListCountry(countries) {
     .map(
       ({ name, flags }) =>
         `<li>
-            <img src='${flags.svg}' alt='${name.official}' width='30'>
+            <img src='${flags.svg}' alt='${name}' width='30'>
             <span>${name.official}</span>
         </li>`
     )
