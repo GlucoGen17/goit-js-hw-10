@@ -1,5 +1,5 @@
-let countryNameURL = 'https://restcountries.com/v3.1/name'
-let filterfeatures = 'namel,capital,population,flags,languages'
+let countryNameURL = 'https://restcountries.com/v3.1/name';
+let filterfeatures = 'name,capital,population,flags,languages';
 
 function fetchCountries(name) {
     return fetch(`${countryNameURL}${name}?fields=${filterfeatures}`)
@@ -10,7 +10,7 @@ function fetchCountries(name) {
         return response.json();
     });
 }
-export default fetchCountries;
+export { fetchCountries};
     
 
 

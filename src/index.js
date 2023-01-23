@@ -1,6 +1,6 @@
 import './css/styles.css';
 import Notiflix from 'notiflix';
-// import { fetchCountries } from './fetchCountries';
+import { fetchCountries }  from './fetchCountries';
 import debounce from 'lodash.debounce';
 
 const DEBOUNCE_DELAY = 300;
@@ -39,14 +39,34 @@ searchBox.addEventListener(
   }, DEBOUNCE_DELAY)
 );
 
-// Функція виводу інформації про країни в назві яких є символи, що ми передираємо
-function createLIstCountry(country) {
-  const markup = country
+function createLIstCountry(countries) {
+  const markup = countries
     .map(
       ({ name, flags }) => `<li>
         <img src="${flags.svg}" alt="${name}" width="30", height="15">&nbsp${name.official}`
     )
-    .join('');
+      .join('');
+    countryList.innerHTML = markup;
 }
-// Функція виводу інформації про країну в назві якої всі символи повністю збігаються
-function createInfoCountry(country) {}
+
+function createInfoCountry(countries) {
+  const markup = countries
+    .map(
+      ({ name, capital, population, flags, languages }) =>
+        ` <div>
+        <img src="${flags.svg}" alt="${name}" width="30", height="20">
+        </h1><b>${name.official}</b></>
+        <p><span><b>Capital:</b> </span>${capital}</p>
+        <p><span><b>Population:</b> </span>${population}</p>
+        <p><span><b>Languages:</b> </span>${Object.values(languages).join(
+          ','
+        )}</p></div>`
+    )
+    .join('');
+
+  countryInfo.innerHTML = markup;
+}
+function clearMarkup() {
+  countryInfo.innerHTML = '';
+  countryList.innerHTML = '';
+}
